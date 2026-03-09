@@ -1,0 +1,23 @@
+local key = getgenv().ScriptKey
+
+if not key then
+    game.Players.LocalPlayer:Kick("No key provided")
+end
+
+local hwid = game:GetService("RbxAnalyticsService"):GetClientId()
+
+local url = "https://islandsting.onrender.com/check?key="..key.."&hwid="..hwid
+
+local response = game:HttpGet(url)
+
+if response:find("valid") then
+    
+    print("Key valid")
+
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/MERZH-T/ISLANDS/refs/heads/main/main"))()
+
+else
+
+    game.Players.LocalPlayer:Kick("Invalid or expired key")
+
+end
