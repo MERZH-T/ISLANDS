@@ -10,8 +10,10 @@ local url = "https://islandsting.onrender.com/check?key="..key.."&hwid="..hwid
 
 local response = game:HttpGet(url)
 
-if response:find("valid") then
-    
+local data = game:GetService("HttpService"):JSONDecode(response)
+
+if data.status == "valid" then
+
     print("Key valid")
 
     loadstring(game:HttpGet("https://raw.githubusercontent.com/MERZH-T/ISLANDS/refs/heads/main/main"))()
